@@ -104,7 +104,7 @@ const Page = (props: Props) => {
           {allUniqueMoves.map((move, i) => {
             return (
               <tr key={`move-${i}`}>
-                <td className="border bg-gray-100 p-2 font-mono">L</td>
+                <td className="border bg-gray-100 p-2 font-mono">Left</td>
                 <td className="border bg-gray-100 p-2 font-mono">
                   {move.attackType}
                 </td>

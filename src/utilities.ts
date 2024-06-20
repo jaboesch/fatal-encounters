@@ -1,3 +1,4 @@
+import seedrandom from "seedrandom";
 import { VALID_MOVE_TREE } from "./constants";
 import {
   ATTACK_MANEUVER,
@@ -37,18 +38,40 @@ export const traverseTree = (
   return paths;
 };
 
+export const randomCoinFlip = (prng: () => number) => {
+  return prng() > 0.5;
+};
+
+export const randomTraversal = (
+  tree: any,
+  prng: () => number,
+  path: string[] = []
+): string[] => {
+  if (tree === null) {
+    return path;
+  }
+
+  const keys = Object.keys(tree);
+  const randomKey = keys[Math.floor(prng() * keys.length)];
+  const nextNode = tree[randomKey];
+
+  return randomTraversal(nextNode, prng, [...path, randomKey]);
+};
+
+export const createMoveFromPath = (path: string[]): Move => {
+  return {
+    attackType: path[0] as ATTACK_MANEUVER,
+    target: path[1] as TARGET,
+    direction: path[2] as DIRECTION,
+    defenseType: path[3] as DEFENSE_MANEUVER,
+    outcome: path[4] as OUTCOME,
+    reset: path[5] as RESET,
+  };
+};
+
 export const getAllMoves = () => {
   const allPaths = traverseTree(VALID_MOVE_TREE);
-  const allMoves: Move[] = allPaths.map((path) => {
-    return {
-      attackType: path[0] as ATTACK_MANEUVER,
-      target: path[1] as TARGET,
-      direction: path[2] as DIRECTION,
-      defenseType: path[3] as DEFENSE_MANEUVER,
-      outcome: path[4] as OUTCOME,
-      reset: path[5] as RESET,
-    };
-  });
+  const allMoves: Move[] = allPaths.map(createMoveFromPath);
   return allMoves;
 };
 

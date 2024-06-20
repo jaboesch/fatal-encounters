@@ -46,6 +46,11 @@ export enum RESET {
   EN_GARDE = "en_garde",
 }
 
+export enum CHARACTER {
+  LEFT = "Sir James",
+  RIGHT = "Sir William",
+}
+
 export type Move = {
   attackType: ATTACK_MANEUVER;
   target: TARGET;
@@ -54,6 +59,11 @@ export type Move = {
   outcome: OUTCOME;
   reset: RESET;
 };
+
+export type Sequence = {
+  attacker: CHARACTER;
+  move: Move;
+}
 
 export type AttackString = `${MODE.ATTACK}-${ATTACK_MANEUVER}-${TARGET}`;
 export type DefenseString = `${MODE.DEFENSE}-${ATTACK_MANEUVER}-${DEFENSE_MANEUVER}-${TARGET}-${OUTCOME}`;
