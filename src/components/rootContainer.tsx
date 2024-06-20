@@ -7,7 +7,7 @@ type Props = {
 
 const RootContainer = ({ children }: Props) => {
   return (
-    <div className="min-h-screen flex flex-col w-full">
+    <div className="min-h-screen flex flex-col w-full pb-[100px]">
       <Nav />
       {children}
     </div>

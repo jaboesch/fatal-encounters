@@ -1,50 +1,4 @@
-export const MODE = {
-  ATTACK: "attack",
-  DEFENSE: "defense",
-};
-
-export const ATTACK_MANEUVER = {
-  SLASH: "slash",
-  CUT: "cut",
-  THRUST: "thrust",
-};
-
-export const DEFENSE_MANEUVER = {
-  PARRY: "parry",
-  DUCK: "duck",
-  JUMP: "jump",
-  DODGE: "dodge",
-  STEP: "step",
-};
-
-export const TARGET = {
-  DIAGONAL: "diagonal",
-  CHEST: "chest",
-  STOMACH: "stomach",
-  FOOT: "foot",
-  HEAD: "head",
-  HIP: "hip",
-  SHOULDER: "shoulder",
-};
-
-export const DIRECTION = {
-  LEFT: "left",
-  RIGHT: "right",
-  FORWARD: "forward",
-};
-
-export const OUTCOME = {
-  SUCCESS: "success",
-  FAILURE: "failure",
-};
-
-export const RESET = {
-  BEAT_PARRY: "beat_parry",
-  CROISE_OFF: "croise_off",
-  BIND_OFF: "bind_off",
-  WITHDRAW: "withdraw",
-  EN_GARDE: "en_garde",
-};
+import { ATTACK_MANEUVER, DEFENSE_MANEUVER, DIRECTION, OUTCOME, RESET, TARGET } from "./types";
 
 export const STANDARD_PARRY_DEFENSE = {
   [DEFENSE_MANEUVER.PARRY]: {
@@ -152,3 +106,10 @@ export const VALID_MOVE_TREE = {
     },
   },
 };
+
+export const ALTERNATE_MARGIN_MOVES_2 = [
+  "defense-slash-step-foot-success",
+  "defense-slash-jump-foot-failure",
+  "defense-slash-jump-foot-success",
+  "defense-cut-parry-head-success"
+]
